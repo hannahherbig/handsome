@@ -35,5 +35,6 @@ class MyClient(discord.Client):
                 await message.delete(delay=10)
 
 
-client = MyClient()
-client.run(config["token"])
+def main():
+    client = MyClient()
+    client.run(config["token"])
