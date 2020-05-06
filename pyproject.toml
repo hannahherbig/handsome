@@ -5,7 +5,7 @@ description = "discord bot for handsome boys"
 authors = ["Andrew Herbig <notandrewherbig@gmail.com>"]
 
 [tool.poetry.scripts]
-bot = "handsome.bot:main"
+bot = "handsome:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"

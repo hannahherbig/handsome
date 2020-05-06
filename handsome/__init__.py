@@ -1,3 +1,4 @@
+import argparse
 import asyncio
 
 import discord
@@ -5,7 +6,7 @@ import toml
 
 
 class MyClient(discord.Client):
-    async def __init__(self, updates_channel):
+    def __init__(self, updates_channel):
         self.updates_channel_id = updates_channel
         super().__init__()
 
@@ -37,7 +38,11 @@ class MyClient(discord.Client):
 
 
 def main():
-    with open("config.toml", "r") as f:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("config", nargs="?", default="config.toml")
+    args = parser.parse_args()
+
+    with open(args.config, "r") as f:
         config = toml.load(f)
 
     client = MyClient(config["channel"])
