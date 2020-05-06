@@ -5,7 +5,7 @@ import discord
 import toml
 
 
-class MyClient(discord.Client):
+class MeuMeu(discord.Client):
     def __init__(self, updates_channel):
         self.updates_channel_id = updates_channel
         super().__init__()
@@ -45,5 +45,5 @@ def main():
     with open(args.config, "r") as f:
         config = toml.load(f)
 
-    client = MyClient(config["channel"])
+    client = MeuMeu(config["channel"])
     client.run(config["token"])
