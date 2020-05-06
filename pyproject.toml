@@ -11,6 +11,7 @@ bot = "handsome:main"
 python = "^3.8"
 "discord.py" = {git = "https://github.com/Rapptz/discord.py.git", extras = ["voice"]}
 toml = "^0.10.0"
+pydantic = "^1.5.1"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
