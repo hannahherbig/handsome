@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "discord bot for handsome boys"
 authors = ["Andrew Herbig <notandrewherbig@gmail.com>"]
 
+[tool.poetry.scripts]
+bot = "handsome.bot:main"
+
 [tool.poetry.dependencies]
 python = "^3.8"
 "discord.py" = {git = "https://github.com/Rapptz/discord.py.git", extras = ["voice"]}
@@ -13,9 +16,6 @@ toml = "^0.10.0"
 black = "^19.10b0"
 isort = "^4.3.21"
 pre-commit = "^2.3.0"
-
-[tool.poetry.scripts]
-bot = "handsome.bot:main"
 
 [build-system]
 requires = ["poetry>=0.12"]
