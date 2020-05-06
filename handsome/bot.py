@@ -3,14 +3,15 @@ import asyncio
 import discord
 import toml
 
-with open("config.toml", "r") as f:
-    config = toml.load(f)
-
 
 class MyClient(discord.Client):
+    async def __init__(self, updates_channel):
+        self.updates_channel_id = updates_channel
+        super().__init__()
+
     async def on_ready(self):
         print(f"I'm {self.user}")
-        self.updates_channel = self.get_channel(config["channel"])
+        self.updates_channel = self.get_channel(self.updates_channel_id)
 
     async def on_voice_state_update(self, member, before, after):
         if member.guild == self.updates_channel.guild:
@@ -36,5 +37,8 @@ class MyClient(discord.Client):
 
 
 def main():
-    client = MyClient()
+    with open("config.toml", "r") as f:
+        config = toml.load(f)
+
+    client = MyClient(config["channel"])
     client.run(config["token"])
