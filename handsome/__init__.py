@@ -4,25 +4,27 @@ import asyncio
 import discord
 import toml
 from pydantic import BaseModel
+from devtools import debug
 
 
 class Config(BaseModel):
-    channel: int
+    text: int
+    voice: int
     token: str
     delay: int = 15
 
 
 class MeuMeu(discord.Client):
-    def __init__(self, cfg):
-        self.cfg = cfg
+    def __init__(self, cfg: Config):
+        self.cfg: Config = cfg
         super().__init__()
 
     def run(self):
         super().run(self.cfg.token)
 
     async def on_ready(self):
-        print(f"I'm {self.user}")
-        self.updates_channel = self.get_channel(self.cfg.channel)
+        debug(self.user)
+        self.updates_channel = self.get_channel(self.cfg.text)
 
     async def on_voice_state_update(self, member, before, after):
         if member.guild == self.updates_channel.guild:
@@ -56,6 +58,7 @@ def main():
         config = toml.load(f)
 
     cfg = Config(**config)
+    debug(cfg)
 
     client = MeuMeu(cfg)
     client.run()

@@ -2,4 +2,4 @@
 config.toml
 *.egg-info
 *.pyc
-.mypy-cache
+.mypy_cache
