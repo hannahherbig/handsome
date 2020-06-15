@@ -1,15 +1,15 @@
 import argparse
 import asyncio
+from typing import List
 
 import discord
 import toml
-from pydantic import BaseModel
 from devtools import debug
+from pydantic import BaseModel
 
 
 class Config(BaseModel):
-    text: int
-    voice: int
+    text: List[int]
     token: str
     delay: int = 15
 
@@ -24,29 +24,34 @@ class MeuMeu(discord.Client):
 
     async def on_ready(self):
         debug(self.user)
-        self.updates_channel = self.get_channel(self.cfg.text)
 
     async def on_voice_state_update(self, member, before, after):
-        if member.guild == self.updates_channel.guild:
-            content = None
-            if before.channel is None:
-                content = f":arrow_right: {member.mention} joined **{after.channel}**"
-            elif after.channel is None:
-                content = f":arrow_left: {member.mention} left **{before.channel}**"
-            elif before.channel != after.channel:
-                if after.channel.position > before.channel.position:
-                    emoji = ":arrow_down:"
-                else:
-                    emoji = ":arrow_up:"
-                content = f"{emoji} {member.mention} moved from **{before.channel}** to **{after.channel}**"
-            if content:
-                message = await self.updates_channel.send(
-                    content,
-                    allowed_mentions=discord.AllowedMentions(
-                        everyone=False, users=False, roles=False
-                    ),
-                )
-                await message.delete(delay=self.cfg.delay)
+        content = None
+        if before.channel is None:
+            content = f":arrow_right: {member.mention} joined **{after.channel}**"
+        elif after.channel is None:
+            content = f":arrow_left: {member.mention} left **{before.channel}**"
+        elif before.channel != after.channel:
+            if after.channel.position > before.channel.position:
+                emoji = ":arrow_down:"
+            else:
+                emoji = ":arrow_up:"
+            content = f"{emoji} {member.mention} moved from **{before.channel}** to **{after.channel}**"
+        if content:
+            for channel_id in self.cfg.text:
+                channel = self.get_channel(channel_id)
+                if channel.guild == member.guild:
+                    break
+            else:
+                channel = None
+
+            message = await channel.send(
+                content,
+                allowed_mentions=discord.AllowedMentions(
+                    everyone=False, users=False, roles=False
+                ),
+            )
+            await message.delete(delay=self.cfg.delay)
 
 
 def main():
