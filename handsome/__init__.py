@@ -2,6 +2,7 @@ import argparse
 import asyncio
 from typing import List
 
+import aioredis
 import discord
 import toml
 from devtools import debug
@@ -17,13 +18,25 @@ class Config(BaseModel):
 class MeuMeu(discord.Client):
     def __init__(self, cfg: Config):
         self.cfg: Config = cfg
+        self.redis = None
         super().__init__()
 
     def run(self):
         super().run(self.cfg.token)
 
+    async def connect_redis(self):
+        if self.redis is None or self.redis.closed:
+            self.redis = await aioredis.create_connection("redis://localhost")
+
     async def on_ready(self):
         debug(self.user)
+
+    #     self.owner = self.get_user(self.cfg.owner)
+    #     debug(self.owner)
+    #     await self.connect_redis()
+
+    # async def on_message(self, message):
+    #     if message.author != self.user and self.user.mentioned_in(message) and
 
     async def on_voice_state_update(self, member, before, after):
         content = None
@@ -59,7 +72,7 @@ def main():
     parser.add_argument("config", nargs="?", default="config.toml")
     args = parser.parse_args()
 
-    with open(args.config, "r") as f:
+    with open(args.config) as f:
         config = toml.load(f)
 
     cfg = Config(**config)
