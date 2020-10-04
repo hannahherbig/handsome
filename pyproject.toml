@@ -12,7 +12,7 @@ python = "^3.8"
 "discord.py" = {git = "https://github.com/Rapptz/discord.py.git", extras = ["voice"]}
 toml = "^0.10.0"
 pydantic = "^1.6.1"
-devtools = "^0.5.1"
+devtools = "^0.6"
 aioredis = "^1.3.1"
 
 [tool.poetry.dev-dependencies]
