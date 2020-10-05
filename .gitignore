@@ -1,5 +1,7 @@
-.vscode
-config.toml
 *.egg-info
 *.pyc
 .mypy_cache
+.venv
+.vscode
+__pycache__
+config.toml
