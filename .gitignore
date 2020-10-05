@@ -1,5 +1,7 @@
 *.egg-info
+*.mp3
 *.pyc
+*.wav
 .mypy_cache
 .venv
 .vscode
