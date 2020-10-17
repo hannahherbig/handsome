@@ -1,11 +1,13 @@
 import argparse
 import asyncio
-from typing import List
+from typing import List, Text
 
 import aioredis
 import discord
 import toml
 from devtools import debug
+from discord import Member, TextChannel, VoiceState
+from discord.channel import VoiceChannel
 from pydantic import BaseModel
 
 
@@ -31,6 +33,11 @@ class MeuMeu(discord.Client):
     async def on_ready(self):
         debug(self.user)
 
+        channel = self.get_channel(233406608217079808)
+        assert isinstance(channel, TextChannel)
+        async for msg in channel.history():
+            pass
+
     #     self.owner = self.get_user(self.cfg.owner)
     #     debug(self.owner)
     #     await self.connect_redis()
@@ -38,13 +45,17 @@ class MeuMeu(discord.Client):
     # async def on_message(self, message):
     #     if message.author != self.user and self.user.mentioned_in(message) and
 
-    async def on_voice_state_update(self, member, before, after):
+    async def on_voice_state_update(
+        self, member: Member, before: VoiceState, after: VoiceState
+    ):
         content = None
         if before.channel is None:
             content = f":arrow_right: {member.mention} joined **{after.channel}**"
         elif after.channel is None:
             content = f":arrow_left: {member.mention} left **{before.channel}**"
         elif before.channel != after.channel:
+            assert isinstance(before.channel, VoiceChannel)
+            assert isinstance(after.channel, VoiceChannel)
             if after.channel.position > before.channel.position:
                 emoji = ":arrow_down:"
             else:
@@ -53,6 +64,7 @@ class MeuMeu(discord.Client):
         if content:
             for channel_id in self.cfg.text:
                 channel = self.get_channel(channel_id)
+                assert isinstance(channel, TextChannel)
                 if channel.guild == member.guild:
                     break
             else:
