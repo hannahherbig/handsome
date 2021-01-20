@@ -116,17 +116,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
-name = "devtools"
-version = "0.6.1"
-description = "Python's missing debug print command and other development tools."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.extras]
-pygments = ["Pygments (>=2.2.0)"]
-
-[[package]]
 name = "discord.py"
 version = "1.7.0a2745+g050bf74"
 description = "A Python wrapper for the Discord API"
@@ -427,7 +416,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "37c78b1b7f4dc89e6b285f86cbbbbc042fd52f630b8d0dc2196e073bed156e3e"
+content-hash = "5f6169ae2bfb1975394008177e098d6b5beb37742ee61fd73099e38c5a76e1df"
 
 [metadata.files]
 aiohttp = [
@@ -512,10 +501,6 @@ chardet = [
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
-]
-devtools = [
-    {file = "devtools-0.6.1-py3-none-any.whl", hash = "sha256:7334183972a8d04e81d08b7f62126abca9b6f4de51d825c5fdcb9c88f252601a"},
-    {file = "devtools-0.6.1.tar.gz", hash = "sha256:a054307594d35d28fae8df7629967363e851ae0ac7b2152640a8a401c39d42d7"},
 ]
 "discord.py" = []
 distlib = [

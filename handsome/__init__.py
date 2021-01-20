@@ -5,7 +5,6 @@ from typing import List, Text
 import aioredis
 import discord
 import toml
-from devtools import debug
 from discord import Member, TextChannel, VoiceState
 from discord.channel import VoiceChannel
 from pydantic import BaseModel
@@ -31,7 +30,7 @@ class MeuMeu(discord.Client):
             self.redis = await aioredis.create_connection("redis://localhost")
 
     async def on_ready(self):
-        debug(self.user)
+        print(self.user)
 
         channel = self.get_channel(233406608217079808)
         assert isinstance(channel, TextChannel)
@@ -39,7 +38,7 @@ class MeuMeu(discord.Client):
             pass
 
     #     self.owner = self.get_user(self.cfg.owner)
-    #     debug(self.owner)
+    #     print(self.owner)
     #     await self.connect_redis()
 
     # async def on_message(self, message):
@@ -88,7 +87,7 @@ def main():
         config = toml.load(f)
 
     cfg = Config(**config)
-    debug(cfg)
+    print(cfg)
 
     client = MeuMeu(cfg)
     client.run()
