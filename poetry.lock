@@ -117,7 +117,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "discord.py"
-version = "1.7.0a2745+g050bf74"
+version = "1.7.0a2750+g0d1e15b"
 description = "A Python wrapper for the Discord API"
 category = "main"
 optional = false
@@ -136,7 +136,7 @@ voice = ["PyNaCl (>=1.3.0,<1.5)"]
 type = "git"
 url = "https://github.com/Rapptz/discord.py.git"
 reference = "master"
-resolved_reference = "050bf74f5db0046c0010c2b7c3ac0c5fd0a500f9"
+resolved_reference = "0d1e15bbc2aab339b121a1d500cbbc34b5fbde74"
 
 [[package]]
 name = "distlib"
@@ -318,7 +318,7 @@ tests = ["pytest (>=3.2.1,!=3.3.0)", "hypothesis (>=3.27.0)"]
 
 [[package]]
 name = "pyupgrade"
-version = "2.7.4"
+version = "2.8.0"
 description = "A tool to automatically upgrade syntax for newer versions."
 category = "dev"
 optional = false
@@ -416,7 +416,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "5f6169ae2bfb1975394008177e098d6b5beb37742ee61fd73099e38c5a76e1df"
+content-hash = "938c3b5fc6ff24814214f8a9200d135cdd4cb760f8bcebf58676a94a04e7afea"
 
 [metadata.files]
 aiohttp = [
@@ -674,8 +674,8 @@ pynacl = [
     {file = "PyNaCl-1.3.0.tar.gz", hash = "sha256:0c6100edd16fefd1557da078c7a31e7b7d7a52ce39fdca2bec29d4f7b6e7600c"},
 ]
 pyupgrade = [
-    {file = "pyupgrade-2.7.4-py2.py3-none-any.whl", hash = "sha256:ab2f47377e977bec8dd41db634fde35bce78fedd2be0e8b189fe687f23fb1d85"},
-    {file = "pyupgrade-2.7.4.tar.gz", hash = "sha256:e57057ccef3fd8e8fad5ba9f365c1288a076271a222ccb502d865c0d8fe16c3a"},
+    {file = "pyupgrade-2.8.0-py2.py3-none-any.whl", hash = "sha256:8770ea7537f717f819fba7ccb5d5ea91a9491ad40b3068ae606abd1e5cc8559a"},
+    {file = "pyupgrade-2.8.0.tar.gz", hash = "sha256:1e920e454e97357dcaadf604afb0cb9a75e2b0f625457908c9e9da3f5b3f82f5"},
 ]
 pyyaml = [
     {file = "PyYAML-5.3.1-cp27-cp27m-win32.whl", hash = "sha256:74809a57b329d6cc0fdccee6318f44b9b8649961fa73144a98735b0aaf029f1f"},
