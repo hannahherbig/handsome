@@ -32,18 +32,6 @@ class MeuMeu(discord.Client):
     async def on_ready(self):
         print(self.user)
 
-        channel = self.get_channel(233406608217079808)
-        assert isinstance(channel, TextChannel)
-        async for msg in channel.history():
-            pass
-
-    #     self.owner = self.get_user(self.cfg.owner)
-    #     print(self.owner)
-    #     await self.connect_redis()
-
-    # async def on_message(self, message):
-    #     if message.author != self.user and self.user.mentioned_in(message) and
-
     async def on_voice_state_update(
         self, member: Member, before: VoiceState, after: VoiceState
     ):
