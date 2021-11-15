@@ -19,7 +19,7 @@ webcolors = "^1.11.1"
 black = "^21.10b0"
 isort = "^5.10.1"
 pre-commit = "^2.13.0"
-flake8 = "^3.9.2"
+flake8 = "^4.0.1"
 pyupgrade = "^2.23.0"
 
 [build-system]
