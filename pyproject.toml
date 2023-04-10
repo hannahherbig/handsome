@@ -12,7 +12,7 @@ python = "^3.8"
 toml = "^0.10.2"
 pydantic = "^1.10.7"
 aioredis = "^2.0.1"
-webcolors = "^1.11.1"
+webcolors = "^1.13"
 "discord.py" = "^1.7.3"
 
 [tool.poetry.dev-dependencies]
